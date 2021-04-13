@@ -1,0 +1,23 @@
+<mvc:View 
+controllerName="desafio.l4e.app.controller.Menu" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns:tnt="sap.tnt"
+xmlns="sap.m">
+		<Page showHeader="true" title="Menu" titleAlignment="Center">
+            <content>
+                <VBox width="100%" >
+                    <Image id="imagem" src="images/BeijaFlor.png" alt="Imagem de um Beija Flor" width="125%" height="125%"/>
+                    <tnt:NavigationList
+                        id="navigationList"
+                        width="320px"
+                        itemSelect="selectMenu">
+                        <tnt:NavigationListItem text="Aba das Plataformas" icon="sap-icon://activities">
+                            <tnt:NavigationListItem text="Cadastrar Plataformas" key="CadastroPlataformas"/>
+                            <tnt:NavigationListItem text="Consultar Plataformas" key="ConsultaPlataformas"/>
+                        </tnt:NavigationListItem>
+                    </tnt:NavigationList>
+                </VBox>
+            </content>
+        </Page>
+</mvc:View>

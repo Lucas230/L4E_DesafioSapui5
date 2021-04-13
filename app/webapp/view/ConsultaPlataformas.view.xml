@@ -1,0 +1,91 @@
+<mvc:View xmlns:internal="sap.landvisz.internal"
+	controllerName="desafio.l4e.app.controller.ConsultaPlataformas" 
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true" 
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+    height="100%">
+	<m:Page
+        showHeader="true"
+		enableScrolling="false"  
+        title="Consulta das Plataformas"
+        titleAlignment="Center"
+		class="sapUiContentPadding">
+		<m:content>
+            <!--Começo da Grid Table-->
+			<Table
+                id="tablePlataformas"
+				rows="{path: 'Plataformas>/'}"
+				selectionMode="None"
+				visibleRowCount="17"
+                rowActionCount="2"
+				paste="onPaste"
+				ariaLabelledBy="Plataformas">
+                <extension>
+                    <m:OverflowToolbar >
+                        <m:Title id="title" text="Plataformas"/>
+                        <m:ToolbarSpacer/>
+                        <!--Barra de pesquisa-->
+						<m:SearchField
+							placeholder="Digite o Nome ou o Tipo da Plataforma"
+							value="{ui>/globalFilter}"
+							search="filterGlobally"
+							width="50%"/>    
+                    </m:OverflowToolbar>
+                </extension>
+				<columns>
+					<Column >
+						<m:Label text="ID" />
+						<template>
+							<m:Text text="{Plataformas>id}" wrapping="true" />
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Nome" />
+						<template>
+							<m:Text text="{Plataformas>nome}" wrapping="true"/>
+						</template>
+					</Column>
+                    <Column >
+						<m:Label text="Tipo" />
+						<template>
+							<m:Text text="{Plataformas>tipo}" wrapping="true"/>
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Data de Criação" />
+						<template>
+							<m:Label text="{Plataformas>criado}" wrapping="true"/>
+						</template>
+					</Column>
+					<Column >
+						<m:Label text="Data de Atualização" />
+						<template>
+							<m:Label text="{Plataformas>atualizado}" wrapping="true"/>
+						</template>
+					</Column>
+					<Column hAlign="Center">
+						<m:Label text="Status" />
+						<template>
+							<m:ObjectStatus text="{= ${Plataformas>status} === 'A' ? 'Ativo' : 'Inativo'}" inverted="true" state="{= ${Plataformas>status} === 'A' ? 'Success' : 'Error'}"></m:ObjectStatus>
+						</template>
+					</Column>
+				</columns>
+                <!--Elementos editar e deletar-->
+                <rowActionTemplate>
+                        <RowAction>
+                            <RowActionItem 
+                                type="Navigation"
+                                press="onNavEditarPlataforma"/>
+                            <RowActionItem 
+                                type="Delete"
+                                press="onExcluir"/>
+                        </RowAction>
+                </rowActionTemplate>
+			</Table>
+            <!--Fim da tabela-->
+		</m:content>
+	</m:Page>
+</mvc:View>
